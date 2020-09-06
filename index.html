@@ -3,35 +3,18 @@
     <head>
         <meta charset="utf-8">
         <meta name='viewport' content='width=device-width, initial-scale=1.0'>
-        <title></title>
-        <style></style>
+        <title>Timer by s3fs</title>
+        <link rel='stylesheet' type="text/css" href='css/style.css'>
     </head>
     <body>
-        <h1>Set time in seconds:</h1>
-        <input id='time' type="text"/>
-        <button for='time' type="button" id='buttonStart'>Start</button>
-        <audio id='sound' src='polizia4.wav'></audio>
-        <script>
-            const timeVal = document.querySelector('#time');
-            const butt = document.querySelector('#buttonStart');
-            const sound = document.querySelector('#sound');
-    
-            butt.addEventListener('click', () => {
-                let timeToSet = parseInt(timeVal.value) * 1000;
-                if (butt.innerHTML == 'Start') {
-                    sound.loop = true;
-                    setTimeout(() => sound.play(), timeToSet);
-                    butt.innerHTML = 'Stop';
-                } else {
-                    butt.innerHTML = 'Start';
-                    sound.loop = false;
-                }
-            })
-
-            //let timeVal = document.getElementById('time');
-            //timeVal.addEventListener('click', e => console.log(timeVal.value))
-            //let timeCurr = new Date();
-            //console.log(timeCurr.getMinutes())
-        </script>
+        <div id='hero' class='anima'>Timer</div>
+        <div id="container">
+            <h1>Set time in <span id="info">seconds</span>:</h1>
+            <input id='time-input' type="text" required/>
+            <button for='time-input' type="button" id='buttonStart'>Start</button>
+            <p id='counter'></p>
+            <audio id='sound' src='polizia4.wav'></audio>
+        </div>
+        <script src='js/script.js'></script>
     </body>
 </html>
