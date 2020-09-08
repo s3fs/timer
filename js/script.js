@@ -1,6 +1,5 @@
 //window.onload doesn't work on my mobile when I try to load it from here. It did work while hosted locally though
 //
-rmIntro();
 
 document.onkeydown = (e) => {
     e.code == 'Enter' ? clock() : void(0);
@@ -47,6 +46,3 @@ butt.addEventListener('click', clock = () => {
     }
 })
 
-const rmIntro = () => {
-    setTimeout(() => document.querySelector('#hero').classList.add('anima'), 1000);
-}
