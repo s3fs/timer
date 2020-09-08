@@ -1,64 +1,94 @@
-@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&display=swap');
-            :root {
-                font-family: Quicksand, sans-serif;
-            }
-            body {
-                text-align: center;
-                height: 100%;
-                width: 100%;   
-                margin: 0; 
-                box-sizing: border-box;
-            }
-            #container {
-                padding-top: 5vh;
-            }
-            #info {
-                text-decoration: underline;
-            }
-            #time-input {
-                border: 0.2rem solid black;
-                font-size: 1.5rem;
-                padding-left: 0.5rem;
-                width: 13rem;
-                border-radius: 1.5rem;
-                outline: none;
-            }
-            #buttonStart {
-                border: 0.2rem solid black;
-                background-color: white;
-                font-size: 1.5rem;
-                font-weight: bold;
-                border-radius: 1.5rem;
-                outline: none;
-                font-family: Quicksand, sans-serif;
-            }
-            #counter {
-                font-size: 1.5rem;
-            }
-            #hero {
-                font-size: 3rem;
-                position: absolute;
-                text-align: center;
-                visibility: visible;
-                background-color: white;
-                height: 90vh;
-                padding-top: 12rem;
-                width: 100%;
-                box-sizing: border-box;
-            }
-            .anima {
-                animation: anim 2s forwards;
-            }
-            @keyframes anim {
-                0% {
-                   opacity: 100%;
-                }
-                50% {
-                    filter: blur(0px);
-                    opacity: 100%;
-                }
-                100% {
-                    visibility: hidden;
-                    opacity: 0%;
-                }
-            }
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&display=swap');
+:root {
+    font-family: 'Quicksand', sans-serif;
+}
+body {
+    text-align: center;
+    height: 100%;
+    width: 100%;   
+    margin: 0; 
+    box-sizing: border-box;
+}
+#container {
+    padding-top: 5vh;
+}
+.span-active {
+    opacity: 100%;
+    background-color: rgb(47, 162, 255);
+    color: white;
+    padding: 0 0.5rem 0 0.5rem;
+    border-radius: 2rem;
+}
+.span-inactive {
+    opacity: 30%;
+    background-color: white;
+}
+span {
+    margin: 1rem 0.5rem 0 0;
+    user-select: none;
+}
+#time-input {
+    border: 0.2rem solid black;
+    font-size: 1.5rem;
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 600;
+    padding-left: 0.5rem;
+    width: 14rem;
+    border-radius: 1.5rem;
+    outline: none;
+}
+#buttonStart {
+    border: 0.2rem solid black;
+    background-color: white;
+    font-size: 1.5rem;
+    font-weight: bold;
+    border-radius: 1.5rem;
+    outline: none;
+    font-family: 'Quicksand', sans-serif;
+}
+#counter {
+    font-size: 1.5rem;
+}
+#hero {
+    font-size: 3rem;
+    position: absolute;
+    z-index: 1;
+    text-align: center;
+    visibility: visible;
+    background-color: white;
+    height: 90vh;
+    padding-top: 12rem;
+    width: 100%;
+    box-sizing: border-box;
+}
+.anima {
+    animation: anim 1s forwards;
+}
+@keyframes anim {
+    50% {
+       opacity: 100%;
+    }
+    100% {
+        visibility: hidden;
+        opacity: 0%;
+    }
+}
+.bb {
+    animation: bba 0.5s forwards;
+}
+.invisible {
+    visibility: hidden;
+}
+@keyframes bba {
+    0% {
+        background-color: white;
+    }
+    100% {
+        background-color: rgb(47, 162, 255);
+    }
+}
+@media only screen and (max-width: 400px) {
+    span {
+        font-size: 1.7rem;
+    }
+}

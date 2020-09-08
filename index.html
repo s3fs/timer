@@ -8,9 +8,9 @@
         <link rel='stylesheet' type="text/css" href='css/style.css'>
     </head>
     <body>
-        <div id='hero' class='anima'>Timer</div>
+        <div id='hero'>Timer</div>
         <div id="container">
-            <h1>Set time in <span id="info">seconds</span>:</h1>
+            <h1 id='head'>Set time in <span id="info" class='span-active'>seconds</span><span class='span-inactive'>minutes</span><span class='span-inactive'>hours</span></h1>
             <input id='time-input' type="text" required/>
             <button for='time-input' type="button" id='buttonStart'>Start</button>
             <p id='counter'></p>
