@@ -1,6 +1,8 @@
-window.onload = () => {
+//window.onload doesn't work on my mobile when I try to load it from here. It did work while hosted locally though
+//
+//window.onload = () => {
     setTimeout(() => document.querySelector('#hero').classList.add('anima'), 1000);
-}
+//}
 
 document.onkeydown = (e) => {
     e.code == 'Enter' ? clock() : void(0);
