@@ -41,6 +41,7 @@ butt.addEventListener('click', clock = () => {
     } else {
         butt.innerHTML = 'Start';
         sound.pause();
+        sound.src = sound.src;
         clearInterval(interval);
         counter.innerHTML = '';
     }
