@@ -24,7 +24,7 @@ const butt = document.querySelector('#buttonStart');
 const sound = document.querySelector('#sound');
 sound.loop = true;
 const counter = document.querySelector('#counter');
-let interval;
+let interval, timeout;
 
 butt.addEventListener('click', clock = () => {
     let timeToSet = parseInt(timeVal.value);
@@ -43,6 +43,7 @@ butt.addEventListener('click', clock = () => {
         sound.pause();
         sound.src = sound.src;
         clearInterval(interval);
+        clearTimeout(timeout);
         counter.innerHTML = '';
     }
 })
