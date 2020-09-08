@@ -6,16 +6,153 @@
         <meta name='viewport' content='width=device-width, initial-scale=1.0'>
         <title>Timer by s3fs</title>
         <link rel='stylesheet' type="text/css" href='css/style.css'>
+        <style>
+            /*@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&display=swap');*/
+            :root {
+                font-family: Quicksand, sans-serif;
+            }
+            body {
+                text-align: center;
+                height: 100%;
+                width: 100%;   
+                margin: 0; 
+                box-sizing: border-box;
+            }
+            #container {
+                padding-top: 5vh;
+            }
+            .span__scr {
+                text-decoration: underline;
+                padding-right: 0.5rem;
+                user-select: none;
+            }
+            .span__scr-inactive {
+                padding-right: 0.5rem;
+                opacity: 30%;
+            }
+            #time-input {
+                border: 0.2rem solid black;
+                font-size: 1.5rem;
+                padding-left: 0.5rem;
+                width: 13rem;
+                border-radius: 1.5rem;
+                outline: none;
+            }
+            #buttonStart {
+                border: 0.2rem solid black;
+                background-color: white;
+                font-size: 1.5rem;
+                font-weight: bold;
+                border-radius: 1.5rem;
+                outline: none;
+                font-family: Quicksand, sans-serif;
+            }
+            #counter {
+                font-size: 1.5rem;
+            }
+            #hero {
+                z-index: 2;
+                font-size: 3rem;
+                position: absolute;
+                text-align: center;
+                visibility: visible;
+                background-color: white;
+                height: 90vh;
+                padding-top: 12rem;
+                width: 100%;
+                box-sizing: border-box;
+            }
+            .anima {
+                animation: anim 2s forwards;
+            }
+            .scr__slide-on {
+                animation: slideon 2s forwards;
+            }
+            .scr__slide-off {
+                animation: slideoff 1s forwards;
+            }
+            @keyframes slideoff {
+                0% {
+                    opacity: 100%;
+                }
+                100% {
+                    opacity: 0%;
+                }
+            }
+            @keyframes slideon {
+                0% {
+                    opacity: 0%;
+                }
+                100% {
+                    opacity: 100%;;
+                }
+            }
+            @keyframes anim {
+                0% {
+                   opacity: 100%;
+                }
+                50% {
+                    filter: blur(0px);
+                    opacity: 100%;
+                }
+                100% {
+                    visibility: hidden;
+                    opacity: 0%;
+                }
+            }
+
+        </style>
     </head>
     <body>
         <div id='hero' class='anima'>Timer</div>
         <div id="container">
-            <h1>Set time in <span id="info">seconds</span>:</h1>
+            <h1 id='hhh'>Set time in <span class='span__scr'>seconds</span><span class='span__scr span__scr-inactive'>minutes</span><span class='span__scr span__scr-inactive'>hours</span></h1>
             <input id='time-input' type="text" required/>
             <button for='time-input' type="button" id='buttonStart'>Start</button>
             <p id='counter'></p>
             <audio id='sound' src='polizia4.wav'></audio>
         </div>
+        <script>
+            const timeVal = document.querySelector('#time-input');
+            const butt = document.querySelector('#buttonStart');
+            const sound = document.querySelector('#sound');
+            sound.loop = true;
+            const counter = document.querySelector('#counter');
+            let interval;
+            const spanContainer = document.querySelector('#hhh');
+            let span = spanContainer.querySelectorAll('.span__scr');
+            for (i of span) {
+                i.addEventListener('click', e => {
+                    let a = spanContainer.children[0];
+                    let b = e.target;
+                    a.classList.add('scr__slide-off');
+                    b.classList.add('scr__slide-on');
+                    setTimeout(() => {
+                        spanContainer.replaceChild(b, a)
+                        spanContainer.appendChild(a);
+                        a.classList.remove('scr__slide-off');
+                        b.classList.add('span__scr-inactive')
+                    }, 500)
+                }) 
+            }
+            butt.addEventListener('click', () => {
+                let timeToSet = parseInt(timeVal.value) * 1000;
+                if (butt.innerHTML == 'Start') {
+                    let i = (timeToSet / 1000) - 1;
+                    interval = setInterval(() => {
+                        i >= 0 ? counter.innerHTML = `You have ${i} second(s) left` : counter.innerHTML = `You are over by ${i * -1} second(s)`;
+                        i--;
+                    }, 1000)
+                    setTimeout(() => sound.play(), timeToSet);
+                    butt.innerHTML = 'Stop';
+                } else {
+                    butt.innerHTML = 'Start';
+                    sound.pause();
+                    clearInterval(interval);
+                    counter.innerHTML = '';
+                }
+            }) 
+        </script>
         <script src='js/script.js'></script>
     </body>
 </html>
