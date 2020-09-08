@@ -36,7 +36,7 @@ butt.addEventListener('click', clock = () => {
             i >= 0 ? counter.innerHTML = `You have ${i} second(s) left` : counter.innerHTML = `You are over by ${i * -1} second(s)`;
             i--;
         }, 1000)
-        setTimeout(() => sound.play(), timeToSet);
+        timeout = setTimeout(() => sound.play(), timeToSet);
         butt.innerHTML = 'Stop';
     } else {
         butt.innerHTML = 'Start';
