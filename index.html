@@ -22,12 +22,13 @@
                 padding-top: 5vh;
             }
             .span__scr {
-                text-decoration: underline;
                 padding-right: 0.5rem;
                 user-select: none;
+                opacity: 100%;
             }
             .span__scr-inactive {
                 padding-right: 0.5rem;
+                user-select: none;
                 opacity: 30%;
             }
             #time-input {
@@ -125,14 +126,14 @@
                 i.addEventListener('click', e => {
                     let a = spanContainer.children[0];
                     let b = e.target;
-                    a.classList.add('scr__slide-off');
-                    b.classList.add('scr__slide-on');
-                    setTimeout(() => {
-                        spanContainer.replaceChild(b, a)
-                        spanContainer.appendChild(a);
-                        a.classList.remove('scr__slide-off');
-                        b.classList.add('span__scr-inactive')
-                    }, 500)
+                    if (b !== a) {
+                        b.classList.add('scr__slide-off');
+                        setTimeout(() => {
+                            spanContainer.replaceChild(b, a)
+                            spanContainer.appendChild(a);
+                            b.classList.remove('scr__slide-off');
+                        }, 500)
+                    }
                 }) 
             }
             butt.addEventListener('click', () => {
