@@ -1,4 +1,4 @@
-window.onload = () => {
+document.onload = () => {
     setTimeout(() => document.querySelector('#hero').classList.add('anima'), 1000);
 }
 
